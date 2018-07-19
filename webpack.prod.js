@@ -35,20 +35,29 @@ module.exports = {
 						}
 					}
 				]
+			},
+			{
+				test: /\.html$/,
+				exclude: /node_modules/,
+				loader: 'html-loader',
+				options: {
+					minimize: true
+				}
 			}
+
 		]
 	},
 
 	plugins: [
 		new UglifyJSPlugin(),
-		new MiniCssExtractPlugin({ filename: 'style.css' }),
-		new HtmlWebpackPlugin({
-			template: 'index.html'
-		})
+		new MiniCssExtractPlugin({ filename: 'style.css' })
+		// new HtmlWebpackPlugin({
+		// 	template: `../src/index.html`
+		// })
 	],
 
 	entry: {
-		index:'index.js'
+		index:'./index.js'
 	},
 
 	output: {

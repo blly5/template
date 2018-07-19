@@ -1,0 +1,1 @@
+require('./src/script/snap.svg-min');
