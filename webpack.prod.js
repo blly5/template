@@ -50,10 +50,8 @@ module.exports = {
 
 	plugins: [
 		new UglifyJSPlugin(),
-		new MiniCssExtractPlugin({ filename: 'style.css' })
-		// new HtmlWebpackPlugin({
-		// 	template: `../src/index.html`
-		// })
+		new MiniCssExtractPlugin({ filename: 'style.css' }),
+		new HtmlWebpackPlugin()
 	],
 
 	entry: {
@@ -64,6 +62,5 @@ module.exports = {
 		filename: '[name].[chunkhash].js',
 		path: path.resolve(__dirname, 'dist')
 	},
-
 	mode: 'production'
 };
