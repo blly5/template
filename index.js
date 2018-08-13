@@ -1,1 +1,1 @@
-require('./src/script/snap.svg-min');
+require('./src/css/index.less');

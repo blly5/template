@@ -1,6 +1,7 @@
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const path = require('path');
+ 
 module.exports = {
 	module: {
 		rules: [
@@ -14,7 +15,7 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.(scss|css)$/,
+				test: /\.(less|css)$/,
 
 				use: [
 					{
@@ -28,39 +29,27 @@ module.exports = {
 						}
 					},
 					{
-						loader: 'sass-loader',
+						loader: 'less-loader',
 
 						options: {
 							sourceMap: true
 						}
 					}
 				]
-			},
-			{
-				test: /\.html$/,
-				exclude: /node_modules/,
-				loader: 'html-loader',
-				options: {
-					minimize: true
-				}
 			}
-
 		]
 	},
 
 	plugins: [
 		new UglifyJSPlugin(),
-		new MiniCssExtractPlugin({ filename: 'style.css' }),
-		new HtmlWebpackPlugin()
+		new MiniCssExtractPlugin({ filename: 'style.css' })
 	],
-
-	entry: {
-		index:'./index.js'
-	},
-
+	entry: `index.js`,
+	
 	output: {
 		filename: '[name].[chunkhash].js',
 		path: path.resolve(__dirname, 'dist')
 	},
+
 	mode: 'production'
 };
