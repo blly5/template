@@ -7,4 +7,5 @@
 
 
 + build/dev.config.js && webpack.dev.config.js 开发环境配置
-+ 支持babel && less && 热加载
++ 支持babel && less && 热加载 
++ 国安庆测试
