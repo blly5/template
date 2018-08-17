@@ -21,7 +21,7 @@ const CleanOption = {
 
 const webpack_Config  = 
     {
-    entry: './src/index.js', //入口文件 
+    entry: './src/js/index.js', //入口文件 
     output: {       //webpack如何输出
         path: path.resolve(__dirname, '../dist'), //定位，输出文件的目标路径
         filename: '[name].js'
@@ -31,12 +31,18 @@ const webpack_Config  =
             {
               test: /\.js$/,
               exclude: /(node_modules|bower_components)/,
-              use: {
-                loader: 'babel-loader',
+              use: [
+                  {loader: 'babel-loader',options: { presets: ['env'] }},
+                //   {loader: 'eslint-loader'}
+              ]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
                 options: {
-                  presets: ['env']
+                    limit: 10000,
+                    name: 'assets/images/[name].[hash:7].[ext]'
                 }
-              }
             },
             {
                 test: /\.less$/, 
