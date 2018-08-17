@@ -42,12 +42,8 @@ const webpack_Config  =
                 use: [
                   'style-loader',
                   MiniCssExtractPlugin.loader,
-                  'css-loader',
-                  {loader:'less-loader',
-                    options:{
-                        strictMath: true,
-                        noIeCompat: true,
-                    }}
+                  {loader:'css-loader', options: { importLoaders: 1, minimize: true} },
+                  {loader:'less-loader',options:{ strictMath: true, noIeCompat: true,} }
                 ]
             }
         ]                  
