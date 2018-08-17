@@ -1,1 +1,1 @@
-
+require('../css/style.less');
