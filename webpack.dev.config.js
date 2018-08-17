@@ -7,10 +7,9 @@ let baseConfig = require('./build/dev.config');
         compress: true,
         port: 1234,
         index: 'index.html',
-        overlay: true
+        overlay: true,
+        open: true
     }
-    console.log(``);
-
 
 module.exports = baseConfig;
 
