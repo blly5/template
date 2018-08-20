@@ -27,7 +27,7 @@ const webpack_Config  =
         filename: '[name].js'
     },
     module: {       //模块的相关配置
-        rules: [  
+        rules: [
             {
               test: /\.js$/,
               exclude: /(node_modules|bower_components)/,
@@ -50,14 +50,17 @@ const webpack_Config  =
                   'style-loader',
                   MiniCssExtractPlugin.loader,
                   {loader:'css-loader', options: { importLoaders: 1, minimize: true} },
-                  {loader:'less-loader',options:{ strictMath: true, noIeCompat: true,} }
+                  {loader:'less-loader',options:{ strictMath: true, noIeCompat: false} },
+                  {loader: 'px2rem-loader',options: { remUni: 75,remPrecision: 8 } }
                 ]
             },
-            // {
-            //     test:/\.css/,
-            //     use:ExtranctTextPlugin.extract(['css-loader', 'less-loader'])
-            // }
-        ]                  
+            {
+                test:/\.html$/,
+                use:[
+                    'html-loader'
+                ]
+            }
+        ]
     },
     plugins: [ 
             //插进的引用, 压缩，分离美化
@@ -68,7 +71,8 @@ const webpack_Config  =
         new CleanWebpackPlugin(CleanFile,CleanOption),
         new HtmlWebpackPlugin({  //将模板的头部和尾部添加css和js模板,dist 目录发布到服务器上，项目包。可以直接上线
             filename: 'index.html', 
-            template: './src/index.html' 
+            template: './src/index.html',
+            inject: true
         }),
         new CopyWebpackPlugin([
             {
@@ -89,7 +93,8 @@ const webpack_Config  =
                 toType: 'dir',
 			    force: true
             }
-        ])
+        ]),
+        new webpack.NoEmitOnErrorsPlugin()
     ]
   };
 
