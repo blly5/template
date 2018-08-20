@@ -23,7 +23,7 @@ const webpack_Config  =
     {
     entry: './src/js/index.js', //入口文件 
     output: {       //webpack如何输出
-        path: path.resolve(__dirname, '../dist'), //定位，输出文件的目标路径
+        path: path.resolve(__dirname, '../dist/'), //定位，输出文件的目标路径
         filename: '[name].js'
     },
     module: {       //模块的相关配置
