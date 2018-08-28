@@ -9,7 +9,7 @@ const ExtranctTextPlugin = require('extract-text-webpack-plugin');
 //CleanWebpackPlugin 删除文件配置
 
 const CleanFile = [
-    'dist/*.css'
+    'dist'
 ];
 const CleanOption = {
     root: `${__dirname}/../`,
@@ -48,7 +48,7 @@ const webpack_Config  =
                 test: /\.less$/, 
                 use: [
                   'style-loader',
-                  MiniCssExtractPlugin.loader,
+                  {loader:MiniCssExtractPlugin.loader},
                   {loader:'css-loader', options: { importLoaders: 1, minimize: true} },
                   {loader:'less-loader',options:{ strictMath: true, noIeCompat: false} },
                   {loader: 'px2rem-loader',options: { remUni: 75,remPrecision: 8 } }
@@ -65,7 +65,7 @@ const webpack_Config  =
     plugins: [ 
             //插进的引用, 压缩，分离美化
         new MiniCssExtractPlugin({
-        　　filename: "[name].[chunkhash:8].css",
+        　　filename: "css/[name].[chunkhash:8].css",
        　　 chunkFilename: "[id].css"
      　　 }),
         new CleanWebpackPlugin(CleanFile,CleanOption),
@@ -79,13 +79,14 @@ const webpack_Config  =
                 from: path.resolve(__dirname, '../src/js/lib'),
                 to: path.resolve(__dirname, '../dist/js/lib'),
                 toType: 'dir',
-			    force: true
+                force: true
             },
             {
                 from: path.resolve(__dirname, '../src/css'),
                 to: path.resolve(__dirname, '../dist/css'),
                 toType: 'dir',
-			    force: true
+			    force: true,
+                ignore: [ '*.less' ]
             },
             {
                 from: path.resolve(__dirname, '../src/images'),
