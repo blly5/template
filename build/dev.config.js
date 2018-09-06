@@ -48,7 +48,7 @@ const webpack_Config  =
                 test: /\.less$/, 
                 use: [
                   'style-loader',
-                  {loader:MiniCssExtractPlugin.loader},
+                  {loader:MiniCssExtractPlugin.loader,options:{publicPath: '../'}},
                   {loader:'css-loader', options: { importLoaders: 1, minimize: true} },
                   {loader: 'px2rem-loader',options: { remUni: 75,remPrecision: 8 } },
                   {loader:'less-loader',options:{ strictMath: true, noIeCompat: false} },
