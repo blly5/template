@@ -24,7 +24,7 @@ const webpack_Config  =
     entry: './src/js/index.js', //入口文件 
     output: {       //webpack如何输出
         path: path.resolve(__dirname, '../dist/'), //定位，输出文件的目标路径
-        filename: '[name].js'
+        filename: '[name].[chunkhash:10].js'
     },
     module: {       //模块的相关配置
         rules: [
@@ -41,7 +41,7 @@ const webpack_Config  =
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: 'assets/images/[name].[hash:7].[ext]'
+                    name: 'assets/images/[name].[hash:10].[ext]'
                 }
             },
             {
@@ -50,8 +50,9 @@ const webpack_Config  =
                   'style-loader',
                   {loader:MiniCssExtractPlugin.loader},
                   {loader:'css-loader', options: { importLoaders: 1, minimize: true} },
+                  {loader: 'px2rem-loader',options: { remUni: 75,remPrecision: 8 } },
                   {loader:'less-loader',options:{ strictMath: true, noIeCompat: false} },
-                  {loader: 'px2rem-loader',options: { remUni: 75,remPrecision: 8 } }
+                  
                 ]
             },
             {
@@ -65,7 +66,7 @@ const webpack_Config  =
     plugins: [ 
             //插进的引用, 压缩，分离美化
         new MiniCssExtractPlugin({
-        　　filename: "css/[name].[chunkhash:8].css",
+        　　filename: "css/[name].[chunkhash:10].css",
        　　 chunkFilename: "[id].css"
      　　 }),
         new CleanWebpackPlugin(CleanFile,CleanOption),
