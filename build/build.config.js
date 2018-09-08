@@ -28,14 +28,14 @@ const webpack_Config  =
     },
     module: {       //模块的相关配置
         rules: [
-            // {
-            //   test: /\.js$/,
-            //   exclude: /(node_modules|bower_components)/,
-            //   use: [
-            //       {loader: 'babel-loader',options: { presets: ['env'] }},
-            //     //   {loader: 'eslint-loader'}
-            //   ]
-            // },
+            {
+              test: /\.js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: [
+                  {loader: 'babel-loader',options: { presets: ['env'] }},
+                //   {loader: 'eslint-loader'}
+              ]
+            },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
