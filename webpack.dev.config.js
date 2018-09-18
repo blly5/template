@@ -8,7 +8,9 @@ let baseConfig = require('./build/dev.config');
         port: 1234,
         index: 'index.html',
         overlay: true,
-        open: true
-    }
+        open: true,
+        quiet: true
+    };
     
 module.exports = baseConfig;
+

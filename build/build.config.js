@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtranctTextPlugin = require('extract-text-webpack-plugin');
+
+
 //CleanWebpackPlugin 删除文件配置
 
 const CleanFile = [
@@ -101,4 +103,3 @@ const webpack_Config  =
   };
 
 module.exports = webpack_Config;
-

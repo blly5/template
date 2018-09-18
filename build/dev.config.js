@@ -1,18 +1,28 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const compiler = webpack({});
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtranctTextPlugin = require('extract-text-webpack-plugin');
+const Colors = require('colors');
+
+
+compiler.run((a)=>{
+    console.clear();
+    console.log(`Done.`.red.bgCyan);
+});
+
+
 //CleanWebpackPlugin
 
 const CleanFile = [
     'dist'
 ];
 const CleanOption = {
-    root: `${__dirname}/../`,
+    root: `${__dirname}/../ *`,
     verbose:  true,
     dry:      false 
 };
@@ -97,8 +107,10 @@ const webpack_Config  =
         ]),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin()
-    ]
+        new webpack.NamedModulesPlugin(),
+       
+    ],
+   
   };
 
 module.exports = webpack_Config;
