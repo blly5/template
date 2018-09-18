@@ -9,10 +9,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtranctTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const uglifyjs = require('uglifyjs-webpack-plugin');
 
 const Colors = require('colors');
 
-
+// compiler.afterPlugins(new BundleAnalyzerPlugin());
 
 compiler.run((a)=>{
     console.clear();
@@ -110,7 +111,8 @@ const webpack_Config  =
             }
         ]),
         new webpack.NoEmitOnErrorsPlugin(),
-        new BundleAnalyzerPlugin()
+        // new BundleAnalyzerPlugin(),
+        new uglifyjs()
     ]
   };
 
