@@ -33,7 +33,7 @@ const webpack_Config  =
     entry: './src/js/index.js', 
     output: {
         path: path.resolve(__dirname, '../dist/'), 
-        filename: '[name].[hash].js'
+        filename: 'js/[name].[hash].js'
     },
     
     module: {     
@@ -44,14 +44,6 @@ const webpack_Config  =
               use: [
                   {loader: 'babel-loader',options: { presets: ['env'] }},
               ]
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                    name: 'assets/images/[name].[hash:10].[ext]'
-                }
             },
             {
                 test: /\.less$/, 
@@ -106,7 +98,6 @@ const webpack_Config  =
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
-       
     ],
    
   };

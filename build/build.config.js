@@ -1,12 +1,23 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const compiler = webpack({});
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtranctTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const Colors = require('colors');
+
+
+
+compiler.run((a)=>{
+    console.clear();
+    console.log(`Build.`.red.bgCyan);
+});
 
 //CleanWebpackPlugin 删除文件配置
 
@@ -26,7 +37,7 @@ const webpack_Config  =
     entry: './src/js/index.js', //入口文件 
     output: {       //webpack如何输出
         path: path.resolve(__dirname, '../dist/'), //定位，输出文件的目标路径
-        filename: '[name].[chunkhash:10].js'
+        filename: 'js/[name].[chunkhash:10].js'
     },
     module: {       //模块的相关配置
         rules: [
@@ -35,7 +46,6 @@ const webpack_Config  =
               exclude: /(node_modules|bower_components)/,
               use: [
                   {loader: 'babel-loader',options: { presets: ['env'] }},
-                //   {loader: 'eslint-loader'}
               ]
             },
             {
@@ -71,6 +81,7 @@ const webpack_Config  =
         　　filename: "css/[name].[chunkhash:10].css",
        　　 chunkFilename: "[id].css"
      　　 }),
+        new OptimizeCssAssetsPlugin(),
         new CleanWebpackPlugin(CleanFile,CleanOption),
         new HtmlWebpackPlugin({  //将模板的头部和尾部添加css和js模板,dist 目录发布到服务器上，项目包。可以直接上线
             filename: 'index.html', 
@@ -98,7 +109,8 @@ const webpack_Config  =
 			    force: true
             }
         ]),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new BundleAnalyzerPlugin()
     ]
   };
 
