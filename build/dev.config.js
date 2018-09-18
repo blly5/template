@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtranctTextPlugin = require('extract-text-webpack-plugin');
-//CleanWebpackPlugin 删除文件配置
+//CleanWebpackPlugin
 
 const CleanFile = [
     'dist'
@@ -17,25 +17,30 @@ const CleanOption = {
     dry:      false 
 };
 
-//Webpack 配置
+
+
+
+
+
+//WebpackConfig
 
 const webpack_Config  = 
     {
-    entry: './src/js/index.js', //入口文件 
-    output: {       //webpack如何输出
-        path: path.resolve(__dirname, '../dist/'), //定位，输出文件的目标路径
+    entry: './src/js/index.js', 
+    output: {
+        path: path.resolve(__dirname, '../dist/'), 
         filename: '[name].[chunkhash:10].js'
     },
-    module: {       //模块的相关配置
+    module: {     
         rules: [
-            // {
-            //   test: /\.js$/,
-            //   exclude: /(node_modules|bower_components)/,
-            //   use: [
-            //       {loader: 'babel-loader',options: { presets: ['env'] }},
-            //     //   {loader: 'eslint-loader'}
-            //   ]
-            // },
+            {
+              test: /\.js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: [
+                  {loader: 'babel-loader',options: { presets: ['env'] }},
+                //   {loader: 'eslint-loader'}
+              ]
+            },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
@@ -96,13 +101,11 @@ const webpack_Config  =
 			    force: true
             }
         ]),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
     ]
   };
 
 module.exports = webpack_Config;
-
-
-
-
 
