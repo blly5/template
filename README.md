@@ -1,6 +1,6 @@
 <h3>Webpack-Page-Template 脚手架配置 v1.0.3</h3>
 
-> + git clone https://github.com/L1Yuu/blogDesign.git
+> + git clone https://github.com/L1Yuu/Webpack-Page-Template.git
 > + npm i  或  cnpm i
 > + npm run dev(开发环境)  npm run build(构建环境)  默认热更新端口 127.0.0.1:1234
 
