@@ -9,13 +9,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtranctTextPlugin = require('extract-text-webpack-plugin');
 const Colors = require('colors');
 
-
 compiler.run((a)=>{
     console.clear();
     console.log(`Done.`.red.bgCyan);
 });
-
-
 
 //CleanWebpackPlugin
 
