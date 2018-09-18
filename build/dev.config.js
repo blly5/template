@@ -18,9 +18,6 @@ const CleanOption = {
 };
 
 
-
-
-
 //WebpackConfig
 
 const webpack_Config  = 
@@ -28,8 +25,9 @@ const webpack_Config  =
     entry: './src/js/index.js', 
     output: {
         path: path.resolve(__dirname, '../dist/'), 
-        filename: '[name].[chunkhash:10].js'
+        filename: '[name].[hash].js'
     },
+    
     module: {     
         rules: [
             {
@@ -37,7 +35,6 @@ const webpack_Config  =
               exclude: /(node_modules|bower_components)/,
               use: [
                   {loader: 'babel-loader',options: { presets: ['env'] }},
-                //   {loader: 'eslint-loader'}
               ]
             },
             {
@@ -53,10 +50,8 @@ const webpack_Config  =
                 use: [
                   'style-loader',
                   {loader:MiniCssExtractPlugin.loader,options:{publicPath: '../'}},
-                  {loader:'css-loader', options: { importLoaders: 1, minimize: true} },
-                //   {loader: 'px2rem-loader',options: { remUni: 75,remPrecision: 8 } },
-                  {loader:'less-loader',options:{ strictMath: true, noIeCompat: false} },
-                  
+                  {loader:'css-loader' },
+                  {loader:'less-loader'},
                 ]
             },
             {
@@ -70,7 +65,7 @@ const webpack_Config  =
     plugins: [ 
             //插进的引用, 压缩，分离美化
         new MiniCssExtractPlugin({
-        　　filename: "css/[name].[chunkhash:10].css",
+        　　filename: "css/[hash].css",
        　　 chunkFilename: "[id].css"
      　　 }),
         new CleanWebpackPlugin(CleanFile,CleanOption),

@@ -10,5 +10,5 @@ let baseConfig = require('./build/dev.config');
         overlay: true,
         open: true
     }
-
+    
 module.exports = baseConfig;
