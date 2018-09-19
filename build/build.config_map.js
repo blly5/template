@@ -7,33 +7,38 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtranctTextPlugin = require('extract-text-webpack-plugin');
-const Colors = require('colors');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const uglifyjs = require('uglifyjs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const Colors = require('colors');
 
 
-//CleanWebpackPlugin
+//CleanWebpackPlugin 删除文件配置
 
 const CleanFile = [
     'dist'
 ];
 const CleanOption = {
-    root: `${__dirname}/../ *`,
+    root: `${__dirname}/../`,
     verbose:  true,
     dry:      false 
 };
 
 
-//WebpackConfig
+//Webpack 配置
 
 const webpack_Config  = 
     {
-    entry: './src/js/index.js', 
-    output: {
-        path: path.resolve(__dirname, '../dist/'), 
-        filename: 'js/[name].[hash].js'
+    entry: './src/js/index.js', //入口文件 
+    output: {       //webpack如何输出
+        path: path.resolve(__dirname, '../dist/'), //定位，输出文件的目标路径
+        filename: 'js/[name].[chunkhash:10].js'
     },
-    
-    module: {     
+    resolve:{
+
+    },
+    module: {       //模块的相关配置
         rules: [
             {
               test: /\.js$/,
@@ -55,8 +60,10 @@ const webpack_Config  =
                 use: [
                   'style-loader',
                   {loader:MiniCssExtractPlugin.loader,options:{publicPath: '../'}},
-                  {loader:'css-loader' },
-                  {loader:'less-loader'},
+                  {loader:'css-loader', options: { importLoaders: 1, minimize: true} },
+                //   {loader: 'px2rem-loader',options: { remUni: 75,remPrecision: 8 } },
+                  {loader:'less-loader',options:{ strictMath: true, noIeCompat: false} },
+                  
                 ]
             },
             {
@@ -70,9 +77,10 @@ const webpack_Config  =
     plugins: [ 
             //插进的引用, 压缩，分离美化
         new MiniCssExtractPlugin({
-        　　filename: "css/[hash].css",
+        　　filename: "css/[name].[chunkhash:10].css",
        　　 chunkFilename: "[id].css"
      　　 }),
+        new OptimizeCssAssetsPlugin(),
         new CleanWebpackPlugin(CleanFile,CleanOption),
         new HtmlWebpackPlugin({  //将模板的头部和尾部添加css和js模板,dist 目录发布到服务器上，项目包。可以直接上线
             filename: 'index.html', 
@@ -101,12 +109,10 @@ const webpack_Config  =
             }
         ]),
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin(),
+        new BundleAnalyzerPlugin(),
+        new uglifyjs(),
         new FriendlyErrorsWebpackPlugin()
-    ],
-   
+    ]
   };
 
 module.exports = webpack_Config;
-

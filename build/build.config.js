@@ -109,7 +109,6 @@ const webpack_Config  =
             }
         ]),
         new webpack.NoEmitOnErrorsPlugin(),
-        new BundleAnalyzerPlugin(),
         new uglifyjs(),
         new FriendlyErrorsWebpackPlugin()
     ]

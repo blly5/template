@@ -1,3 +1,4 @@
+
 /**reset**/
 html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0; }
 header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
@@ -74,137 +75,62 @@ html,body {width: 100%; height: 100%; max-width: 750px; line-height:1.4; margin:
 
 //Page Style
 
+
 .y-header{
 
-    .y-header-swiper{
-        .swiper-pagination{
-            bottom:4px;
-        }
-        .swiper-pagination-bullet{
-            width:10px;
-            height:10px;
-            background:rgba(255,255,255,.7);
-            opacity:.8;
-
-            &.swiper-pagination-bullet-active{
-                background:#fba40e;
-            }
-
-        }
-
-    }
-
-
-
-    .y-header-menu{
-        padding:0 2%;
-        border-bottom:1px solid #d6d6d6;
-        ul{
-            ._clearfix();
-            padding:10px 0;
-            li{
-                width:25%;
-                float:left;
-                padding:2% 4%;
-                overflow:hidden;
-                i{
-                    display:block;
-                    overflow: hidden;
-                    ._css3(border-radius,50%);
-                    ._css3(filter,drop-shadow(0 0 5px #cadae8));
-                }
-                p{
-                    line-height:1.5;
-                    font-size:.4rem;
-                    font-weight:300;
-                    color:#666;
-                    padding-top:.5em;
-                    text-align:center;
-                }
-            }
-        }
-    }
-
 }
-
-
-.y-site-index{
-   width:98%;
-   margin:0 auto;
-   padding:10px 0;
-   text-align:center; 
-   .y-site-header{
-       padding-bottom:10px;
-       span{
-           display:inline-block;
-           padding:0 2px;
-           font-size:.58rem;
-           font-weight:bold;
-           &:nth-of-type(1){
-                color:#00375c;
-           }
-           &:nth-of-type(2){
-                color:#fba40e;
-            }
-       }
-       i{
-           display:inline-block;
-           width:100%;
-           text-transform: uppercase;
-           color:#00375c;
-           font-weight:300;
-           font-size:.25rem;
-       }
-   }
-
-   .y-site-desc{
-       width:96%;
-       margin:0 auto;
-       text-align:left;
-       font-size:.4rem;
-       color:#666;
-       line-height:1.8;
-       font-weight:300;
-       text-indent:2em;
-       padding:10px 0;
-   }
-
-
-
-}
-
-
-
-.y-area{
-    padding:10px 0;
-}
-
-
-.y-s1-title{
-    width:98%;
-    margin:0 auto;
-    span{
-        display:block;
-        text-align:center;
-        font-weight:bold;
-        b{
-            color:#fba40e;
-        }
-    }
-}
-
-.y-mark{
+.y-synopsis{
     position: relative;
 
-    .y-mark-copyright{
-        position: absolute;
+    .y-synopsis-mark{
         width:100%;
-        left:0;
-        bottom:2%;
-        text-align:center;
-        font-size:.3rem;
-        font-weight:300;
-        line-height:1.5;
-        color:#fff;
+        background:url(../images/y_mark_mask.png) no-repeat center top;
+        background-size:100%;
+        padding-top:1rem;
+        ._css3(transform,translateY(-1.2rem));
+
+    }
+
+}
+
+
+.y-show{
+    width:96%;
+    margin:0 auto;
+    ul{
+        ._clearfix();
+        padding-bottom:.5rem;
+        li{
+            width:49%;
+            float:left;
+            ._css3(box-shadow,0 0 10px 2px #ccc);
+            &:nth-of-type(even){
+                margin-left:2%;
+            }
+            margin-bottom:.24rem;
+        }
+    }
+    .y-show-ctrl{
+        width:100%;
+        a{
+            
+        }
     }
 }
+
+
+
+
+.y-footer{
+    p{
+        width:100%;
+        text-align:center;
+        background:#00375c;
+        line-height:1.5;
+        font-size:.32rem;
+        padding:.2rem 0 .6rem 0;
+        color:#fff;
+        font-weight:300;
+    }
+}
+
