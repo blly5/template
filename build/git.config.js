@@ -5,7 +5,8 @@ let msg;
 let main = async ()=>{
     console.log(`Soon...`.bgBlue);
     await execa(`git`, [`add`, `.`]);
-    console.clear(`请输入Commit ⤵️`);
+    console.log(`请输入Commit ⤵️`);
+    
     
     await execa(`echo`,['input']).then(a=>{
         msg = a;
