@@ -18,6 +18,7 @@ const Colors = require('colors');
 compiler.run((a)=>{
     console.clear();
     console.log(`Build.`.red.bgCyan);
+    console.log(process.env);
 });
 
 //CleanWebpackPlugin 删除文件配置
@@ -30,6 +31,7 @@ const CleanOption = {
     verbose:  true,
     dry:      false 
 };
+
 
 //Webpack 配置
 
@@ -111,9 +113,11 @@ const webpack_Config  =
             }
         ]),
         new webpack.NoEmitOnErrorsPlugin(),
-        // new BundleAnalyzerPlugin(),
+        new BundleAnalyzerPlugin(),
         new uglifyjs()
     ]
   };
+
+  console.log(webpack_Config.plugins);
 
 module.exports = webpack_Config;
