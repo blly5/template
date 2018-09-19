@@ -9,7 +9,7 @@ let main = async ()=>{
     
     
     let msg = await execa(`echo`,['input']);
-    await console.log('msg');
+
     await execa(`git`, [`commit`, `-m`, `${msg}`]); 
     await execa(`git`, [`push`]);
 }
