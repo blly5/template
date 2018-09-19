@@ -10,7 +10,7 @@ let main = async ()=>{
 }
 main().then(a=>{
     console.clear();
-    console.log(`Done`.bgBlue);
+    console.log(`Done`.bgGreen);
 }).catch(a=>{
     console.log(`${a}`.bgMagenta);
 });
