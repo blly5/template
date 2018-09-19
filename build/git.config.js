@@ -14,7 +14,7 @@ let main = async ()=>{
     await execa(`git`, [`push`]);
 }
 main().then(a=>{
-    console.log(a.bgBlue);
+    console.log(a,'123');
     console.log(`Done`.bgGreen);
 }).catch(a=>{
     console.log(`${a}`.bgMagenta);
