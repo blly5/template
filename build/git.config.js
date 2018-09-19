@@ -9,6 +9,7 @@ let main = async ()=>{
     await execa(`git`, [`push`]);
 }
 main().then(a=>{
+    console.clear();
     console.log(`Done`.bgBlue);
 }).catch(a=>{
     console.log(`${a}`.bgMagenta);
