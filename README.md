@@ -1,4 +1,4 @@
-<h2>Webpack-Page-Template 脚手架配置 v1.0.3</h2>
+<h2>Webpack-Page-Template 脚手架配置 v1.0.4 (过渡)</h2>
 
 > + git clone https://github.com/L1Yuu/Webpack-Page-Template.git
 > + npm i  或  cnpm i
