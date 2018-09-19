@@ -9,6 +9,7 @@ let main = async ()=>{
     
     await execa(`echo`,['input']).then(a=>{
         msg = a;
+        console.log(a);
     })
     .catch(a=>{
         msg = 'Done';
