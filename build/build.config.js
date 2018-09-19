@@ -10,16 +10,9 @@ const ExtranctTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const uglifyjs = require('uglifyjs-webpack-plugin');
-
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const Colors = require('colors');
 
-// compiler.afterPlugins(new BundleAnalyzerPlugin());
-
-compiler.run((a)=>{
-    console.clear();
-    console.log(`Build.`.red.bgCyan);
-    console.log(process.env);
-});
 
 //CleanWebpackPlugin 删除文件配置
 
@@ -41,6 +34,9 @@ const webpack_Config  =
     output: {       //webpack如何输出
         path: path.resolve(__dirname, '../dist/'), //定位，输出文件的目标路径
         filename: 'js/[name].[chunkhash:10].js'
+    },
+    resolve:{
+
     },
     module: {       //模块的相关配置
         rules: [
@@ -114,10 +110,9 @@ const webpack_Config  =
         ]),
         new webpack.NoEmitOnErrorsPlugin(),
         new BundleAnalyzerPlugin(),
-        new uglifyjs()
+        new uglifyjs(),
+        new FriendlyErrorsWebpackPlugin()
     ]
   };
-
-  console.log(webpack_Config.plugins);
 
 module.exports = webpack_Config;

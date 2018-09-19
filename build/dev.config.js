@@ -8,11 +8,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtranctTextPlugin = require('extract-text-webpack-plugin');
 const Colors = require('colors');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
-compiler.run((a)=>{
-    console.clear();
-    console.log(`Done.`.red.bgCyan);
-});
 
 //CleanWebpackPlugin
 
@@ -98,6 +95,7 @@ const webpack_Config  =
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
+        new FriendlyErrorsWebpackPlugin()
     ],
    
   };
