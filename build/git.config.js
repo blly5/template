@@ -3,10 +3,13 @@ const Colors = require('colors');
 
 
 let main = async ()=>{
+    console.log(`Soon`.bgCyan);
     await execa(`git`, [`add`, `.`]);
     await execa(`git`, [`commit`, `-m`, `🐘`]);
     await execa(`git`, [`push`]);
 }
-main().catch(a=>{
+main().then(a=>{
+    console.log(`Done`.bgCyan);
+}).catch(a=>{
     console.log(`${a}`.bgMagenta);
 });
