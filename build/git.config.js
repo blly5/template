@@ -5,7 +5,8 @@ const Colors = require('colors');
 let main = async ()=>{
     console.log(`Soon...`.bgBlue);
     await execa(`git`, [`add`, `.`]);
-    await execa(`git`, [`commit`, `-m`, `🐘`]);
+    const msg = await execa(`echo`,['input']);
+    await execa(`git`, [`commit`, `-m`, `🐘`]); 
     await execa(`git`, [`push`]);
 }
 main().then(a=>{
