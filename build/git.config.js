@@ -1,12 +1,18 @@
 const execa = require("execa");
 const Colors = require('colors');
-
+let msg;
 
 let main = async ()=>{
     console.log(`Soon...`.bgBlue);
     await execa(`git`, [`add`, `.`]);
     console.clear(`请输入Commit ⤵️`);
-    const msg = await execa(`echo`,['input']);
+    
+    await execa(`echo`,['input']).then(a=>{
+        msg = a;
+    })
+    .catch(a=>{
+        msg = 'Done';
+    });
     await execa(`git`, [`commit`, `-m`, `${msg}`]); 
     await execa(`git`, [`push`]);
 }
