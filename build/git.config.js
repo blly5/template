@@ -7,7 +7,7 @@ let main = async ()=>{
     await execa(`git`, [`add`, `.`]);
     console.clear(`请输入Commit ⤵️`);
     const msg = await execa(`echo`,['input']);
-    await execa(`git`, [`commit`, `-m`, `🐘`]); 
+    await execa(`git`, [`commit`, `-m`, `${msg}`]); 
     await execa(`git`, [`push`]);
 }
 main().then(a=>{
