@@ -17,16 +17,12 @@ function getMessage(){
 
 let main = async ()=>{
     console.log(`Soon...`.bgBlue);
-
-    let amsg = await getMessage();
+    await execa(`git`, [`add`, `.`]);
+    await getMessage().then(a=>{
+        execa(`git`, [`commit`, `-m`, `${a}`]); 
+    });
 
     
-
-    await execa(`git`, [`add`, `.`]);
-
-    amsg.then(resolve=>{
-        execa(`git`, [`commit`, `-m`, `${resolve}`]); 
-    })
 
     await execa(`git`, [`push`]);
 }
