@@ -5,7 +5,7 @@ const rl = readline.createInterface(process.stdin,process.stdout);
 let msg = '';
 
 function getMessage(){
-    new Promise((resolve) => {
+    return  new Promise((resolve) => {
         rl.question('please enter your commit message: ', (message) => {
             msg = message || new Date().getTime();
             rl.close();
@@ -15,14 +15,18 @@ function getMessage(){
 }
 
 
-
 let main = async ()=>{
     console.log(`Soon...`.bgBlue);
-    let m = await getMessage();
+
+    let amsg = await getMessage();
+
+    
 
     await execa(`git`, [`add`, `.`]);
 
-    await execa(`git`, [`commit`, `-m`, `${m}`]); 
+    amsg.then(resolve=>{
+        execa(`git`, [`commit`, `-m`, `${resolve}`]); 
+    })
 
     await execa(`git`, [`push`]);
 }
