@@ -6,14 +6,13 @@ let msg = '';
 
 function getMessage(){
     return  new Promise((resolve) => {
-        rl.question('please enter your commit message: ', (message) => {
+        rl.question('commit message: ', (message) => {
             msg = message || new Date().getTime();
             rl.close();
             resolve(msg)
         });
     });
 }
-
 
 let main = async ()=>{
     console.log(`Soon...`.bgBlue);
@@ -22,9 +21,8 @@ let main = async ()=>{
         execa(`git`, [`commit`, `-m`, `${a}`]); 
     });
 
-    
-
     await execa(`git`, [`push`]);
+
 }
 main().then(a=>{
     console.clear();
