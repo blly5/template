@@ -12,4 +12,4 @@ npm i
 
 + build/dev.config.js && webpack.dev.config.js 开发环境配置
 + build/git.config.js git环境配置
-+ 支持Babel、Less、热加载、打包文件路径预览、文件压缩、git文件上传
++ 支持Babel、Less、热加载、打包文件路径预览、文件压缩、git提交
