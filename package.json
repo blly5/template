@@ -1,5 +1,5 @@
 {
-  "name": "l1yuu",
+  "name": "liyu",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,11 +8,8 @@
     "build": "webpack --config webpack.build.config.js --mode production",
     "git": "node build/git.config.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://L1Yuu@github.com/L1Yuu/UE-E.git"
-  },
-  "author": "",
+  "repository": "git+https://L1Yuu@github.com/L1Yuu/UE-E.git",
+  "author": "blue <574519075@qq.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/L1Yuu/UE-E/issues"

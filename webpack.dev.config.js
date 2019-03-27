@@ -1,16 +1,25 @@
+const path = require('path');
 
+const ruleConfig = require('./webpack.rule');
+const plguinsConfig = require('./webpack.plguins');
 
-let baseConfig = require('./build/dev.config');
-
-    baseConfig.devServer={
+module.exports = {
+    entry: './src/js/index.js', 
+    output: {
+        path: path.resolve(__dirname, '../dist/'), 
+        filename: 'js/[name].[hash].js'
+    },
+    module:{
+        rules:ruleConfig
+    },
+    plugins:plguinsConfig,
+    devServer:{
         contentBase:'dist',
         compress: true,
-        port: 1234,
+        port:8080,
         index: 'index.html',
         overlay: true,
         open: true,
-        quiet: true
-    };
-    
-module.exports = baseConfig;
-
+        quiet: true 
+    }
+};
