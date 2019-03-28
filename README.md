@@ -11,4 +11,4 @@ npm i
 > +  提示: 默认热更新端口 127.0.0.1:8080
 
 + build/git.config.js git环境配置
-+ 支持Babel、Less、热加载、打包文件路径预览、文件压缩、Git提交
++ 支持Babel、Less、热加载、多页面打包、文件压缩、Git提交

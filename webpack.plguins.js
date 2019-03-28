@@ -1,25 +1,38 @@
 const webpack = require('webpack');
 const path = require('path');
-
+const glob = require('glob');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+
+//多页面生成打包
+
+let files = glob.sync('./src/*.html');
+let _plguins = [];
+files.forEach((item,i)=>{
+    var htmlName=item.slice(item.lastIndexOf("/")+1);
+    var name=htmlName.split(".")[0];
+    _plguins.push(
+        new HtmlWebpackPlugin({  
+            chunks: [`${name}`],
+            filename:`${htmlName}`, 
+            template: `./src/${name}.html`,
+            inject: true
+        })
+    );
+});
 
 
 
 module.exports = [
         //插进的引用, 压缩，分离美化
         new MiniCssExtractPlugin({
-        　　filename: "css/[hash].css",
-        　　 chunkFilename: "[id].css"
-        　　 }),
-        //将模板的头部和尾部添加css和js模板,dist 目录发布到服务器上，项目包。可以直接上线
-        new HtmlWebpackPlugin({  
-            filename: 'index.html', 
-            template: './src/index.html',
-            inject: true
-        }),
+            filename: "css/[hash].css",
+            chunkFilename: "[id].css"
+    　　 }),
+        //多页面生成打包
+        ..._plguins,
         new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, './src/js/lib'),
