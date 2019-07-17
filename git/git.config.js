@@ -1,16 +1,23 @@
-const execa = require("execa");
-const Colors = require('colors');
-const readline = require('readline');
-const rl = readline.createInterface(process.stdin, process.stdout);
+/*
+ * @Author: Blue 
+ * @Date: 2019-07-17 11:54:15 
+ * @Last Modified by: Blue
+ * @Last Modified time: 2019-07-17 14:41:06
+ */
+
+const execa =           require("execa");
+const Colors =          require('colors');
+const readline =        require('readline');
+const rl =              readline.createInterface(process.stdin, process.stdout);
 
     let msg = '';
 
-    function getMessage(){
-        return  new Promise((resolve) => {
-            rl.question('commit message: ', (message) => {
+    function getMessage() {
+        return  new Promise( resolve => {
+            rl.question('commit message: ', message => {
                 msg = message || new Date().getTime();
                 rl.close();
-                resolve(msg)
+                resolve( msg );
             });
         });
     };
@@ -25,7 +32,7 @@ const rl = readline.createInterface(process.stdin, process.stdout);
     }
     main().then( a => {
         console.clear();
-        console.log(`Done`.bgGreen);
+        console.log(`\n Done`.bgGreen);
     })
     .catch( a => {
         console.log(`${a}`.bgMagenta);
