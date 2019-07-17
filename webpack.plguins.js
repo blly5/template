@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const process = require('process');
+
+
 //多页面生成打包
 
 let files = glob.sync('./src/*.html');

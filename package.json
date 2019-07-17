@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "NODE_ENV=DEV webpack-dev-server --config webpack.dev.config.js --mode development",
     "build": "NODE_ENV=PRO webpack --config webpack.build.config.js --mode production",
-    "git": "node build/git.config.js"
+    "git": "node git/git.config.js"
   },
   "repository": "git+https://L1Yuu@github.com/L1Yuu/UE-E.git",
   "author": "blue <574519075@qq.com>",

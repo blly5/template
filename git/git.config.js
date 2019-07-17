@@ -1,7 +1,7 @@
 const execa = require("execa");
 const Colors = require('colors');
 const readline = require('readline');
-const rl = readline.createInterface(process.stdin,process.stdout);
+const rl = readline.createInterface(process.stdin, process.stdout);
 
     let msg = '';
 
@@ -15,7 +15,7 @@ const rl = readline.createInterface(process.stdin,process.stdout);
         });
     };
 
-    let main = async ()=>{
+    let main = async () => {
         console.log(`Soon...`.bgBlue);
         await execa(`git`, [`add`, `.`]);
         await getMessage().then(a=>{
@@ -23,14 +23,11 @@ const rl = readline.createInterface(process.stdin,process.stdout);
         });
         await execa(`git`, [`push`]);
     }
-    main().then(a=>{
+    main().then( a => {
         console.clear();
         console.log(`Done`.bgGreen);
     })
-    .catch(a=>{
+    .catch( a => {
         console.log(`${a}`.bgMagenta);
     });
-
-
-
 
