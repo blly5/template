@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-
+const process = require('process');
 //多页面生成打包
 
 let files = glob.sync('./src/*.html');
@@ -23,8 +23,6 @@ files.forEach((item,i)=>{
     );
 });
 
-
-
 module.exports = [
         //插进的引用, 压缩，分离美化
         new MiniCssExtractPlugin({
@@ -33,6 +31,9 @@ module.exports = [
     　　 }),
         //多页面生成打包
         ..._plguins,
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"'+process.env.NODE_ENV+'"'
+        }),
         new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, './src/js/lib'),

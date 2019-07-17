@@ -1,10 +1,10 @@
 {
-  "name": "liyu",
+  "name": "Page-Template",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.config.js --mode development",
-    "build": "webpack --config webpack.build.config.js --mode production",
+    "dev": "NODE_ENV=DEV webpack-dev-server --config webpack.dev.config.js --mode development",
+    "build": "NODE_ENV=PRO webpack --config webpack.build.config.js --mode production",
     "git": "node build/git.config.js"
   },
   "repository": "git+https://L1Yuu@github.com/L1Yuu/UE-E.git",
