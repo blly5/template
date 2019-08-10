@@ -2,13 +2,16 @@
  * @Author: Blue 
  * @Date: 2019-07-17 11:54:15 
  * @Last Modified by: Blue
- * @Last Modified time: 2019-07-17 14:41:06
+ * @Last Modified time: 2019-07-18 15:38:25
  */
 
 const execa =           require("execa");
 const Colors =          require('colors');
 const readline =        require('readline');
-const rl =              readline.createInterface(process.stdin, process.stdout);
+const rl =              readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
     let msg = '';
 
