@@ -1,11 +1,16 @@
-const webpack = require('webpack');
-const path = require('path');
-const glob = require('glob');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack                     = require('webpack');
+const path                        = require('path');
+const glob                        = require('glob');
+const MiniCssExtractPlugin        = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin           = require('html-webpack-plugin');
+const CopyWebpackPlugin           = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const ImagewebpackPlugin          = require('imagemin-webpack-plugin').default;
 const process = require('process');
+
+
+console.log(ImagewebpackPlugin);
+
 
 
 //多页面生成打包
@@ -57,5 +62,10 @@ module.exports = [
                 force: true
             }
         ]),
-        new FriendlyErrorsWebpackPlugin()
+        new FriendlyErrorsWebpackPlugin(),
+        new ImagewebpackPlugin({
+            jpegtran: {
+                progressive: true
+            }
+        })
 ];
