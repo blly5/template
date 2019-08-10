@@ -21,7 +21,7 @@ module.exports = [
         test: /\.less$/, 
         use: [
         'style-loader',
-        {loader:MiniCssExtractPlugin.loader,options:{publicPath: '../'}},
+        {loader:MiniCssExtractPlugin.loader,options:{publicPath: '../'}}, 
         {loader:'css-loader' },
         {loader:'less-loader'},
         ]
