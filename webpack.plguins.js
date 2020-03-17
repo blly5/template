@@ -9,7 +9,6 @@ const ImagewebpackPlugin = require('imagemin-webpack-plugin').default;
 const process = require('process');
 
 //多页面生成打包
-
 let files = glob.sync('./src/*.html');
 let _plguins = [];
 files.forEach((item, i) => {

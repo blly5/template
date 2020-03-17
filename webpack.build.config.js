@@ -18,10 +18,28 @@ module.exports = {
     devtool: 'eval',
     output: {
         path: path.resolve(__dirname, './dist/'),
-        filename: 'js/[name].[hash].js'
+        filename: 'js/[name].[chunkhash].js'
     },
     module: {
         rules: ruleConfig
     },
-    plugins: plguinsConfig
+    plugins: plguinsConfig,
+    optimization: {
+        splitChunks: {
+            minSize: 30,
+            cacheGroups: {
+                default: {
+                    name: 'common',
+                    chunks: 'initial',
+                    minChunks: 2
+                },
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'initial',
+                    priority: -10
+                }
+            }
+        }
+    }
 };
