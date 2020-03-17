@@ -6,7 +6,7 @@ module.exports = [
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: [
-            {loader: 'babel-loader'},
+            { loader: 'babel-loader' },
         ]
     },
     {
@@ -18,22 +18,26 @@ module.exports = [
         }
     },
     {
-        test: /\.less$/, 
+        test: /\.less$/,
         use: [
-        'style-loader',
-        {loader:MiniCssExtractPlugin.loader,options:{publicPath: '../'}}, 
-        {loader:'css-loader' },
-        {loader:'less-loader'},
+            'style-loader',
+            { loader: MiniCssExtractPlugin.loader, options: { publicPath: '../' } },
+            { loader: 'css-loader' },
+            { loader: 'less-loader' },
         ]
     },
     {
-        test:/\.html$/,
-        use:[
+        test: /\.html$/,
+        use: [
             'html-loader'
         ]
     },
     {
         test: /\.ts$/,
         use: "ts-loader"
+    },
+    {
+        test: /\.js$/,
+        loader: 'eslint-loader',
     }
 ]

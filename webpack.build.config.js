@@ -15,7 +15,7 @@ files.forEach((item, i) => {
 
 module.exports = {
     entry: entrys,
-    devtool: 'inline-source-map',
+    devtool: 'eval',
     output: {
         path: path.resolve(__dirname, './dist/'),
         filename: 'js/[name].[hash].js'

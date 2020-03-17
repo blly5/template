@@ -6,7 +6,7 @@ const glob = require('glob');
 let entrys = {};
 
 //多页面生成打包
-let files = glob.sync('./src/js/*.js');
+let files = glob.sync('./src/js/*.ts');
 files.forEach((item, i) => {
     var htmlName = item.slice(item.lastIndexOf("/") + 1);
     var name = htmlName.split(".")[0];
@@ -24,6 +24,9 @@ module.exports = {
     },
     plugins: plguinsConfig,
     devServer: {
+        proxy: {
+            
+        },
         contentBase: path.join(__dirname, "dist"),
         compress: true,
         port: 8080,
