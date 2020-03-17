@@ -2,42 +2,42 @@
  * @Author: Blue 
  * @Date: 2019-07-17 11:54:15 
  * @Last Modified by: Blue
- * @Last Modified time: 2019-07-18 15:38:25
+ * @Last Modified time: 2020-03-17 17:14:53
  */
 
-const execa =           require("execa");
-const Colors =          require('colors');
-const readline =        require('readline');
-const rl =              readline.createInterface({
+const execa = require("execa");
+const Colors = require('colors');
+const readline = require('readline');
+const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-    let msg = '';
+let msg = '';
 
-    function getMessage() {
-        return  new Promise( resolve => {
-            rl.question('commit message: ', message => {
-                msg = message || new Date().getTime();
-                rl.close();
-                resolve( msg );
-            });
+function getMessage() {
+    return new Promise(resolve => {
+        rl.question('commit message: ', message => {
+            msg = message || new Date().getTime();
+            rl.close();
+            resolve(msg);
         });
-    };
+    });
+};
 
-    let main = async () => {
-        console.log(`Soon...`.bgBlue);
-        await execa(`git`, [`add`, `.`]);
-        await getMessage().then(a=>{
-            execa(`git`, [`commit`, `-m`, `${a}`]); 
-        });
-        await execa(`git`, [`push`]);
-    }
-    main().then( a => {
-        console.clear();
-        console.log(`\n Done`.bgGreen);
-    })
-    .catch( a => {
+let main = async () => {
+    console.log(`Soon...`.bgBlue);
+    await execa(`git`, [`add`, `.`]);
+    await getMessage().then(a => {
+        execa(`git`, [`commit`, `-m`, `${a}`]);
+    });
+    await execa(`git`, [`push`]);
+}
+main().then(a => {
+    console.clear();
+    console.log(`\n Done`.bgGreen);
+})
+    .catch(a => {
         console.log(`${a}`.bgMagenta);
     });
 
