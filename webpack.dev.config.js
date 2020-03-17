@@ -7,31 +7,29 @@ let entrys = {};
 
 //多页面生成打包
 let files = glob.sync('./src/js/*.js');
-files.forEach((item,i)=>{
-    var htmlName=item.slice(item.lastIndexOf("/")+1);
-    var name=htmlName.split(".")[0];
-    entrys[name]=item;
+files.forEach((item, i) => {
+    var htmlName = item.slice(item.lastIndexOf("/") + 1);
+    var name = htmlName.split(".")[0];
+    entrys[name] = item;
 });
 
-console.log(entrys);
-
 module.exports = {
-    entry:entrys, 
+    entry: entrys,
     output: {
-        path: path.resolve(__dirname, './dist/'), 
+        path: path.resolve(__dirname, './dist/'),
         filename: 'js/[name].[hash].js'
     },
-    module:{
-        rules:ruleConfig
+    module: {
+        rules: ruleConfig
     },
-    plugins:plguinsConfig,
-    devServer:{
+    plugins: plguinsConfig,
+    devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
-        port:8080,
+        port: 8080,
         index: 'index.html',
         overlay: true,
         open: true,
-        quiet: true 
+        quiet: true
     }
 };
