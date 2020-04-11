@@ -2,7 +2,7 @@
  * @Author: Blue
  * @Date: 2019-07-17 11:54:15
  * @Last Modified by: Blue
- * @Last Modified time: 2020-04-11 16:10:19
+ * @Last Modified time: 2020-04-11 16:14:03
  */
 
 const execa = require("execa");
@@ -36,6 +36,7 @@ async function main() {
         await execa('git', ['commit', '-m', message]);
         loading.start();
         await execa('git', ['push']);
+        console.clear();
         loading.succeed();
     } catch (e) {
         loading.warn(e);
