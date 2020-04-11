@@ -2,7 +2,7 @@
  * @Author: Blue
  * @Date: 2019-07-17 11:54:15
  * @Last Modified by: Blue
- * @Last Modified time: 2020-04-11 16:14:03
+ * @Last Modified time: 2020-04-11 16:36:15
  */
 
 const execa = require("execa");
@@ -42,5 +42,8 @@ async function main() {
         loading.warn(e);
     }
 };
+
+
+
 
 main();
