@@ -1,43 +1,46 @@
 /*
- * @Author: Blue 
- * @Date: 2019-07-17 11:54:15 
+ * @Author: Blue
+ * @Date: 2019-07-17 11:54:15
  * @Last Modified by: Blue
- * @Last Modified time: 2020-03-17 17:15:56
+ * @Last Modified time: 2020-04-11 16:09:44
  */
 
 const execa = require("execa");
-const Colors = require('colors');
-const readline = require('readline');
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+const Colors = require("colors");
+const readline = require("readline");
+const ora = require("ora");
+
+const loading = ora({
+    prefixText: "loading",
+    color: "blue",
 });
 
-let msg = '';
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
 
 function getMessage() {
-    return new Promise(resolve => {
-        rl.question('commit message: ', message => {
-            msg = message || new Date().getTime();
+    return new Promise((resolve) => {
+        rl.question("commit message:".bgGreen, (message) => {
+            message = message || "";
             rl.close();
-            resolve(msg);
+            resolve(message);
         });
     });
 };
 
-let main = async () => {
-    console.log(`Soon...`.bgBlue);
-    await execa(`git`, [`add`, `.`]);
-    await getMessage().then(a => {
-        execa(`git`, [`commit`, `-m`, `${a}`]);
-    });
-    await execa(`git`, [`push`]);
-}
-main().then(a => {
-    console.clear();
-    console.log(`\n Done`.bgGreen);
-})
-    .catch(a => {
-        console.log(`${a}`.bgMagenta);
-    });
+async function main() {
+    try {
+        await execa('git', ['add', '.']);
+        let message = await getMessage();
+        await execa('git', ['commit', '-m', message]);
+        loading.start();
+        await execa('git', ['push']);
+        loading.succeed();
+    } catch (e) {
+        loading.warn(e);
+    }
+};
 
+main();
