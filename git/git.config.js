@@ -2,7 +2,7 @@
  * @Author: Blue
  * @Date: 2019-07-17 11:54:15
  * @Last Modified by: Blue
- * @Last Modified time: 2020-04-11 16:09:44
+ * @Last Modified time: 2020-04-11 16:10:19
  */
 
 const execa = require("execa");
@@ -11,7 +11,6 @@ const readline = require("readline");
 const ora = require("ora");
 
 const loading = ora({
-    prefixText: "loading",
     color: "blue",
 });
 
